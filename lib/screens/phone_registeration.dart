@@ -371,33 +371,13 @@ class PhoneRegistrationPageScreen extends StatelessWidget {
                                                 7.00,
                                               ),
                                             ),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                getHorizontalSize(
-                                                  8.00,
-                                                ),
+                                            child: TextField(
+                                              decoration: InputDecoration(
+                                                border: OutlineInputBorder(),
+                                                hintText: 'Enter a search term',
                                               ),
-                                              border: Border.all(
-                                                color: ColorConstant.indigo900,
-                                                width: getHorizontalSize(
-                                                  1.00,
-                                                ),
-                                              ),
-                                            ),
-                                            child: Text(
-                                              '',
-                                              textAlign: TextAlign.left,
-                                              style: TextStyle(
-                                                color: ColorConstant.indigo900,
-                                                fontSize: getFontSize(
-                                                  16,
-                                                ),
-                                                fontFamily: 'Inter',
-                                                fontWeight: FontWeight.w500,
-                                                letterSpacing: 0.50,
-                                                height: 1.63,
-                                              ),
+                                              keyboardType:
+                                                  TextInputType.number,
                                             ),
                                           ),
                                         ),
