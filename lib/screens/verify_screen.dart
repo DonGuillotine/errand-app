@@ -1,11 +1,17 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kumru/core/app_export.dart';
-import 'package:kumru/screens/verify_screen.dart';
+import 'package:kumru/screens/phone_registeration.dart';
+import 'package:kumru/screens/success_screen.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
-class PhoneRegistrationPageScreen extends StatelessWidget {
+class VerificationPageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    StreamController<ErrorAnimationType>? errorController = StreamController();
+    TextEditingController textEditingController = TextEditingController();
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorConstant.whiteA700,
@@ -57,16 +63,26 @@ class PhoneRegistrationPageScreen extends StatelessWidget {
                                 children: [
                                   Align(
                                     alignment: Alignment.centerLeft,
-                                    child: Container(
-                                      height: getVerticalSize(
-                                        20.00,
-                                      ),
-                                      width: getHorizontalSize(
-                                        10.00,
-                                      ),
-                                      child: SvgPicture.asset(
-                                        ImageConstant.imgArrowleft2,
-                                        fit: BoxFit.fill,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  PhoneRegistrationPageScreen()),
+                                        );
+                                      },
+                                      child: Container(
+                                        height: getVerticalSize(
+                                          20.00,
+                                        ),
+                                        width: getHorizontalSize(
+                                          10.00,
+                                        ),
+                                        child: SvgPicture.asset(
+                                          ImageConstant.imgArrowleft2,
+                                          fit: BoxFit.fill,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -126,7 +142,7 @@ class PhoneRegistrationPageScreen extends StatelessWidget {
                                       text: TextSpan(
                                         children: <InlineSpan>[
                                           TextSpan(
-                                            text: 'Enter',
+                                            text: 'Input',
                                             style: TextStyle(
                                               color: ColorConstant.teal300,
                                               fontSize: getFontSize(
@@ -139,7 +155,7 @@ class PhoneRegistrationPageScreen extends StatelessWidget {
                                             ),
                                           ),
                                           TextSpan(
-                                            text: ' your phone number',
+                                            text: ' Verification code',
                                             style: TextStyle(
                                               color: ColorConstant.indigo900,
                                               fontSize: getFontSize(
@@ -169,7 +185,7 @@ class PhoneRegistrationPageScreen extends StatelessWidget {
                                       ),
                                     ),
                                     child: Text(
-                                      "We will send you an SMS with a code to verify the number",
+                                      "Kindly enter the OTP sent to you via a verification SMS",
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
@@ -194,77 +210,6 @@ class PhoneRegistrationPageScreen extends StatelessWidget {
                                         24.00,
                                       ),
                                     ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Text(
-                                          "Nigeria",
-                                          overflow: TextOverflow.ellipsis,
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            color: ColorConstant.indigo900,
-                                            fontSize: getFontSize(
-                                              20,
-                                            ),
-                                            fontFamily: 'Inter',
-                                            fontWeight: FontWeight.w500,
-                                            letterSpacing: 0.50,
-                                            height: 1.63,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                            left: getHorizontalSize(
-                                              10.00,
-                                            ),
-                                          ),
-                                          child: Text(
-                                            "+234",
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.left,
-                                            style: TextStyle(
-                                              color: ColorConstant.teal300,
-                                              fontSize: getFontSize(
-                                                20,
-                                              ),
-                                              fontFamily: 'Inter',
-                                              fontWeight: FontWeight.w500,
-                                              letterSpacing: 0.50,
-                                              height: 1.63,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                            left: getHorizontalSize(
-                                              13.00,
-                                            ),
-                                            top: getVerticalSize(
-                                              13.00,
-                                            ),
-                                            bottom: getVerticalSize(
-                                              4.00,
-                                            ),
-                                          ),
-                                          child: Container(
-                                            height: getVerticalSize(
-                                              10.00,
-                                            ),
-                                            width: getHorizontalSize(
-                                              20.00,
-                                            ),
-                                            child: SvgPicture.asset(
-                                              ImageConstant.imgArrowdown2,
-                                              fit: BoxFit.fill,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
                                   ),
                                   Padding(
                                     padding: EdgeInsets.only(
@@ -285,108 +230,40 @@ class PhoneRegistrationPageScreen extends StatelessWidget {
                                           CrossAxisAlignment.center,
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Container(
-                                          height: getVerticalSize(
-                                            32.00,
-                                          ),
-                                          width: getHorizontalSize(
-                                            55.00,
-                                          ),
-                                          child: TextFormField(
-                                            decoration: InputDecoration(
-                                              hintText: '+234',
-                                              hintStyle: TextStyle(
-                                                fontSize: getFontSize(
-                                                  16.0,
-                                                ),
-                                                color: ColorConstant.indigo900,
-                                              ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                  getHorizontalSize(
-                                                    8.00,
-                                                  ),
-                                                ),
-                                                borderSide: BorderSide(
-                                                  color:
-                                                      ColorConstant.indigo900,
-                                                  width: 1,
-                                                ),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                  getHorizontalSize(
-                                                    8.00,
-                                                  ),
-                                                ),
-                                                borderSide: BorderSide(
-                                                  color:
-                                                      ColorConstant.indigo900,
-                                                  width: 1,
-                                                ),
-                                              ),
-                                              isDense: true,
-                                              contentPadding: EdgeInsets.only(
-                                                left: getHorizontalSize(
-                                                  10.00,
-                                                ),
-                                                top: getVerticalSize(
-                                                  12.00,
-                                                ),
-                                                bottom: getVerticalSize(
-                                                  5.00,
-                                                ),
-                                              ),
+                                        Expanded(
+                                          child: PinCodeTextField(
+                                            length: 4,
+                                            obscureText: false,
+                                            animationType: AnimationType.fade,
+                                            keyboardType: TextInputType.number,
+                                            pinTheme: PinTheme(
+                                              shape: PinCodeFieldShape.box,
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              fieldHeight: 50,
+                                              fieldWidth: 40,
+                                              activeFillColor: Colors.white,
                                             ),
-                                            style: TextStyle(
-                                              color: ColorConstant.indigo900,
-                                              fontSize: getFontSize(
-                                                16.0,
-                                              ),
-                                              fontFamily: 'Inter',
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                            left: getHorizontalSize(
-                                              15.00,
-                                            ),
-                                          ),
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            height: getVerticalSize(
-                                              32.00,
-                                            ),
-                                            width: getHorizontalSize(
-                                              188.00,
-                                            ),
-                                            padding: EdgeInsets.only(
-                                              left: getHorizontalSize(
-                                                8.00,
-                                              ),
-                                              top: getVerticalSize(
-                                                7.00,
-                                              ),
-                                            ),
-                                            child: TextField(
-                                              decoration: InputDecoration(
-                                                border: OutlineInputBorder(
-                                                  gapPadding: 4.0,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    getHorizontalSize(
-                                                      8.00,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              keyboardType:
-                                                  TextInputType.number,
-                                            ),
+                                            animationDuration:
+                                                Duration(milliseconds: 300),
+                                            backgroundColor: ColorConstant
+                                                .teal300
+                                                .withOpacity(0.1),
+                                            enableActiveFill: false,
+                                            errorAnimationController:
+                                                errorController,
+                                            controller: textEditingController,
+                                            onCompleted: (v) {
+                                              print("Completed");
+                                            },
+                                            beforeTextPaste: (text) {
+                                              print("Allowing to paste $text");
+                                              //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+                                              //but you can show anything you want here, like your pop up saying wrong paste format or etc
+                                              return true;
+                                            },
+                                            onChanged: (String value) {},
+                                            appContext: context,
                                           ),
                                         ),
                                       ],
@@ -400,7 +277,7 @@ class PhoneRegistrationPageScreen extends StatelessWidget {
                                           24.00,
                                         ),
                                         top: getVerticalSize(
-                                          512.00,
+                                          400.00,
                                         ),
                                         right: getHorizontalSize(
                                           24.00,
@@ -420,7 +297,7 @@ class PhoneRegistrationPageScreen extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    VerificationPageScreen()),
+                                                    RegistrationSuccessfulScreen()),
                                           );
                                         },
                                         child: Row(
