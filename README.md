@@ -1,4 +1,25 @@
-# habit_app
+# Send Us App (Still in Early Developement Stages)
+
+<p align="center">
+  <a href="https://flutter.io/">
+    <img src="https://user-images.githubusercontent.com/89584431/215066394-fae98a50-75fb-48a6-95f3-d1f64e0e3147.png" alt="Logo" height=72>
+  </a>
+
+  <h3 align="center">An Errand App</h3>
+
+
+  <p align="center">
+  Errand App is a one-stop solution for all your errand-running needs. It allows users to receive suggestions for local services such as grocery stores, dry cleaners, and pharmacies. Users can also make bookings and payments through the app, streamlining their errand-running experience. With intuitive navigation, user-friendly design, and real-time updates, the app makes running errands a breeze.
+    <br>
+    <br>
+    Try it out now!, made with much  :heart:
+    <br>
+    <br>
+    <a href="https://github.com/DonGuillotine/errand-app/issues/new">Report bug</a>
+    ·
+    <a href="https://github.com/DonGuillotine/errand-app/issues/new">Request feature</a>
+  </p>
+</p>
 
 A new Flutter project.
 
