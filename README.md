@@ -1,4 +1,4 @@
-# Send Us App (Still in Early Developement Stages)
+# Errand App (Still in Early Developement Stages)
 
 <p align="center">
   <a href="https://flutter.io/">
